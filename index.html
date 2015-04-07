@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    <title>Buman - Administrador de Presupuestos</title>
+    <link rel="stylesheet"  href="css/themes/default/jquery.mobile-1.4.0.css">
+    <link rel="stylesheet"  href="css/app.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.mobile-1.4.0.js"></script>
+</head>
+
+<body>
+<div data-role="page" class="" id="mainPage">
+    <div data-role="header" >
+        <h1>Buman</h1>
+        <a href="#settingsPage" id='settingsButton' class="ui-btn-right" data-role="button" data-icon="gear">Config</a>
+    </div><!-- /header -->
+
+    <div data-role="tabs">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#newBill" class="ui-btn-active">Nuevo Gasto</a></li>
+                <li><a href="#report">Todos los Gastos</a></li>
+            </ul>
+        </div><!-- /navbar -->
+
+        <!-- New Bill Section -->
+        <div id="newBill" class="ui-content">
+            <form>
+                <div data-role="fieldcontain">
+                    <label for="billAmount">Monto Gastando:</label>
+                    <input type="number" name="billAmount" id="billAmount" data-clear-btn="true" maxlength="3" value="" placeholder="Ingrese monto">
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="billDescription">Concepto:</label>
+                    <input type="text" name="billDescription" id="billDescription" data-clear-btn="true" value="" placeholder="Ingrese Descripcion del gasto">
+                </div>
+                <p style="text-align: center;">
+                    <a href="#" id="saveNewBill" data-role="button" data-icon="check">Aceptar</a>
+                </p>
+
+                <p class="budget totals">
+                    <label>Presupuesto restante</label>
+                    <span id="availableBudget">$0.00</span>
+                </p>
+                <p class="budget">
+                    <label>Presupuesto del mes</label>
+                    <span id="monthlyBudget">$0.00</span>
+                </p>
+            </form>
+        </div><!-- /New Bill Section -->
+
+        <!-- Summarized report section  -->
+        <div id="report" class="ui-content">
+            <p style="text-align: center;">
+                <a href="#generatedReport" id="generateBillsReport" data-role="button" data-icon="action">Generar Reporte de Gastos</a>
+            </p>
+        </div><!-- /Summarized report section  -->
+
+    </div><!-- /tabs -->
+</div>
+
+<!-- Generated Report Section -->
+<div data-role="page" class="" id="generatedReport" data-add-back-btn="true" >
+    <div data-role="header" class="">
+        <a href="#mainPage" class="ui-btn ui-icon-back ui-btn-icon-left" data-rel="back">Atras</a>
+        <h1>Buman - Gastos del Mes</h1>
+    </div>
+    <ul data-role="listview" id="monthlyBills">
+        <!-- The elements are inserted dinamically by js -->
+    </ul>
+
+    <p style="text-align: center;">
+        <a href="#confirmResetDialog" data-rel="popup" data-position-to="window" data-icon="action" data-role="button" data-inline="true" data-transition="pop">Cerrar el Presupuesto</a>
+
+        <div data-role="popup" id="confirmResetDialog" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+            <div data-role="header" data-theme="a" class="ui-corner-top">
+                <h1>Atencion</h1>
+            </div>
+            <div data-role="content" class="ui-corner-bottom ui-content">
+                <h3 class="ui-title">Se dispone a Cerrar el presupuesto.</h3>
+                <p>Todas las transacciones se eliminarán del dispositivo.<strong>Esta acción no puede deshacerse.</strong></p>
+                <p>¿Está Seguro?</p>
+                <a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">No</a>
+                <a href="#" id="resetBudget" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">Si</a>
+            </div>
+        </div>
+    </p>
+
+</div>
+
+
+<!-- Settings Section -->
+<div data-role="page" class="" id="settingsPage" data-add-back-btn="true" >
+    <div data-role="header" class="">
+        <a href="#mainPage" class="ui-btn ui-icon-delete ui-btn-icon-left" data-rel="back">Cancelar</a>
+        <h1>Buman - Configuracion</h1>
+    </div>
+    <div data-role="content" class="">
+        <form>
+            <input type="number" name="newMonthlyBudget" id="newMonthlyBudget" value="" placeholder="Presupuesto Mensual">
+            <p style="text-align: center;">
+                <a href="#" id='saveSettings' data-role="button" data-inline="true" data-icon="check">Guardar</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script src="js/repository.js"></script>
+<script src="js/app.js"></script>
+<script src="js/budgetManager.js"></script>
+</body>
+</html>
