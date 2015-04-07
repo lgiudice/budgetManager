@@ -1,1 +1,0 @@
-simple budget manager made in phonegap + jquery

@@ -48,7 +48,7 @@ repository = {
     initializeBills: function () {
         var allTheBills = repository.getBills();
         if (!allTheBills) {
-            repository.cleanBills;
+            repository.cleanBills();
         }
     }
 };

@@ -55,8 +55,6 @@ model = {
         }
         repository.initializeBills();
     }
-
-
 };
 
 // Bill constructor
