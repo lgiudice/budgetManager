@@ -34,10 +34,10 @@
         $('#monthlyBills')
             .append($('<li/>')
                 .append($('<div/>', { 'class': 'ui-grid-b' })
-                    .append($('<div/>', { 'class': 'ui-block-a', 'style' : 'width:80%' })
+                    .append($('<div/>', { 'class': 'ui-block-a', 'style' : 'width:70%' })
                         .append($('<h2/>', { 'text': aBill.description }))
                         .append($('<p/>', { 'text': aBill.date })))
-                    .append($('<div/>', { 'class': 'ui-block-b', 'style' : 'width:20%' })
+                    .append($('<div/>', { 'class': 'ui-block-b', 'style' : 'width:30%' })
                         .append($('<h1/>', { 'text': '$' + aBill.amount.toFixed(2) })))));
 
         refreshReport();
